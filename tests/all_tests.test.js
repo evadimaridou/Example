@@ -42,16 +42,6 @@ test("PUT Author", async (t) => {
 	t.is(statusCode, 200);
 });
 
-test("GET Authors", async (t) => {
-
-	const { body, statusCode } = await t.context.got.get(`authors`);
-
-    t.truthy(body, "Body exists")
-    t.is(body[1].id, 0, "Body id exists")
-    t.is(body[1].name, "name", "Body name exists")
-    t.is(statusCode, 200, "Status Code is 200")
-
-});
 
 test("POST Author", async (t) => {
     const requestBody = {
@@ -63,7 +53,16 @@ test("POST Author", async (t) => {
 	t.is(statusCode, 200);
     t.is(body.id, 0, "Body id exists")
 });
+test("GET Authors", async (t) => {
 
+	const { body, statusCode } = await t.context.got.get(`authors`);
+
+    t.truthy(body, "Body exists")
+    t.is(body[1].id, 0, "Body id exists")
+    t.is(body[1].name, "name", "Body name exists")
+    t.is(statusCode, 200, "Status Code is 200")
+
+});
 test("DELETE Book", async (t) => {
     const bookId = 0
 	const { statusCode } = await t.context.got.delete(`books/${bookId}`);
