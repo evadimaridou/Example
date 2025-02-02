@@ -14,7 +14,7 @@ test.after.always((t) => {
 	t.context.server.close();
 });
 
-
+//Test for GET Author
 test("GET Author", async (t) => {
     const authorsId = 0
 	const { body, statusCode } = await t.context.got.get(`authors/${authorsId}`);
@@ -24,12 +24,16 @@ test("GET Author", async (t) => {
     t.is(statusCode, 200, "Status Code is 200")
 
 });
+
+//Test for DELETE Author
 test("DELETE Author", async (t) => {
     const authorsId = 0
 	const {statusCode } = await t.context.got.delete(`authors/${authorsId}`);
 
 	t.is(statusCode, 200);
 });
+
+//Test for EDIT Author
 test("PUT Author", async (t) => {
     const authorsId = 0
     const requestBody = {
@@ -42,7 +46,7 @@ test("PUT Author", async (t) => {
 	t.is(statusCode, 200);
 });
 
-
+//Test for POST Author
 test("POST Author", async (t) => {
     const requestBody = {
         name : "lala"
@@ -53,6 +57,8 @@ test("POST Author", async (t) => {
 	t.is(statusCode, 200);
     t.is(body.id, 0, "Body id exists")
 });
+
+//Test for GET Authors
 test("GET Authors", async (t) => {
 
 	const { body, statusCode } = await t.context.got.get(`authors`);
@@ -63,6 +69,8 @@ test("GET Authors", async (t) => {
     t.is(statusCode, 200, "Status Code is 200")
 
 });
+
+//Test for DELETE Book
 test("DELETE Book", async (t) => {
     const bookId = 0
 	const { statusCode } = await t.context.got.delete(`books/${bookId}`);
@@ -70,6 +78,8 @@ test("DELETE Book", async (t) => {
 	t.is(statusCode, 200);
     
 });
+
+//Test for GET Book
 test("GET Book", async (t) => {
     const bookId = 0
 	const { body, statusCode } = await t.context.got.get(`books/${bookId}`);
@@ -79,6 +89,7 @@ test("GET Book", async (t) => {
     t.is(statusCode, 200, "Status Code is 200")
 });
 
+//Test for EDIT Book
 test("PUT Book", async (t) => {
     const bookId = 0
     const requestBody = {
@@ -95,6 +106,7 @@ test("PUT Book", async (t) => {
 	t.is(statusCode, 200);
 });
 
+//Test for GET Books
 test("GET Books", async (t) => {
 
 	const { body, statusCode } = await t.context.got.get(`books`);
